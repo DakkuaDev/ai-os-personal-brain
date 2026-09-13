@@ -31,7 +31,7 @@ A personal AI operation system in three layers:
 ```
 
 ## Delivery model (the core invariant)
-1. All cron reports deliver into CEO's Bot Chat (`deliver=bot-chat:ceo` in Hermes cron terms).
+1. All cron reports deliver into CEO's Bot Chat (`deliver=bot-chat:ceo-bot` in Hermes cron terms).
 2. Fleet bots message CEO with summaries after every meaningful task.
 3. CEO merges/dedupes into ONE digest and posts it to the owner (home channel / DM).
 4. Owner replies only to CEO. CEO decides: answer, delegate to a bot, or escalate to cloud rescue.

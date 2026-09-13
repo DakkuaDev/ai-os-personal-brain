@@ -24,11 +24,11 @@ descriptions.
 ## 4. Fleet
 | Bot | Role | Reports to |
 |---|---|---|
-| `ceo` | Orchestrator + single deliver agent | owner |
-| `finance` | Personal finance (tracking, DCA, taxes, portfolio) | ceo |
-| `career` | Career: jobs, CV, LinkedIn, personal brand | ceo |
-| `health` | Health: exercise, diet, habits, metrics | ceo |
-| `research` | Deep research: house hunting, skills, business | ceo |
+| `ceo-bot` | Orchestrator + single deliver agent | owner |
+| `finances-bot` | Personal finance (tracking, DCA, taxes, portfolio) | ceo |
+| `career-bot` | Career: jobs, CV, LinkedIn, personal brand | ceo |
+| `health-bot` | Health: exercise, diet, habits, metrics | ceo |
+| `research-bot` | Deep research: house hunting, skills, business | ceo |
 
 Roster is live: run `hermes profile list` (Hermes) before handoffs. Handoffs use `@mention` or
 agent-to-agent DMs; the recipient runs its own turn on its own machine.

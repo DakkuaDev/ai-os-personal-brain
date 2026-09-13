@@ -11,12 +11,12 @@ bad()  { say "❌ $1"; FAIL=1; }
 say "Agent-First Life OS — verify"
 
 # 1. Fleet profiles exist
-for bot in ceo finance career health research; do
+for bot in ceo-bot finances-bot career-bot health-bot research-bot; do
   if hermes profile list 2>/dev/null | grep -q " $bot "; then ok "profile $bot exists"; else bad "profile $bot missing"; fi
 done
 
 # 2. Exactly one Discord/chat owner (ceo)
-CEODISC=$(hermes -p ceo config get platforms.discord.enabled 2>/dev/null || echo false)
+CEODISC=$(hermes -p ceo-bot config get platforms.discord.enabled 2>/dev/null || echo false)
 if [ "$CEODISC" = "True" ] || [ "$CEODISC" = "true" ]; then ok "ceo owns chat platform"; else bad "ceo does not own chat platform"; fi
 
 # 3. Report crons target ceo's bot chat
@@ -35,7 +35,7 @@ if grep -rIl -E "(DISCORD_BOT_TOKEN|API_KEY|SECRET)" --exclude-dir=.git . 2>/dev
   bad "possible secret committed (see files above)"; else ok "no secrets in repo"; fi
 
 # 6. CEO responds
-if timeout 60 hermes -p ceo chat -Q -q "ping" 2>/dev/null | grep -qiE "pong|online|✅"; then
+if timeout 60 hermes -p ceo-bot chat -Q -q "ping" 2>/dev/null | grep -qiE "pong|online|✅"; then
   ok "ceo responds"; else bad "ceo did not respond to ping"; fi
 
 echo

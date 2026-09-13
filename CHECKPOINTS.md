@@ -4,10 +4,10 @@ A task is done when its checkpoint passes — executable where possible, observa
 These are the acceptance criteria for the whole system and for each domain.
 
 ## System health (`scripts/verify.sh` must end green)
-- [ ] All fleet profiles exist (`ceo`, `finance`, `career`, `health`, `research`) and respond to a
+- [ ] All fleet profiles exist (`ceo-bot`, `finances-bot`, `career-bot`, `health-bot`, `research-bot`) and respond to a
       Bot Chat ping.
 - [ ] Exactly ONE profile owns the chat platform (Discord/WhatsApp) — the CEO. No token conflicts.
-- [ ] All report crons deliver to `bot-chat:ceo` (or equivalent CEO channel); zero crons post raw
+- [ ] All report crons deliver to `bot-chat:ceo-bot-bot` (or equivalent CEO channel); zero crons post raw
       output to the owner.
 - [ ] Vault exists, is git-tracked, and `git status` is clean after each session.
 - [ ] `.env` exists locally with required keys; no secrets appear in this repo or in chat.

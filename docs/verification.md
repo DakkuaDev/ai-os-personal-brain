@@ -10,10 +10,10 @@ How to prove the system works — executable where possible, observable otherwis
 Checks (extend as the system grows):
 - All fleet profiles exist (`ceo finance career health research`).
 - Exactly one profile owns the chat platform (no token conflict).
-- All report crons target `bot-chat:ceo` (grep `cron/jobs.json` for `deliver`).
+- All report crons target `bot-chat:ceo-bot` (grep `cron/jobs.json` for `deliver`).
 - Vault is a git repo with no uncommitted changes (after a session).
 - `.env` present and no secrets committed.
-- CEO responds to a ping (`hermes -p ceo chat -Q -q "ping"` returns quickly).
+- CEO responds to a ping (`hermes -p ceo-bot chat -Q -q "ping"` returns quickly).
 
 ## 2. Delivery loop test
 1. Fire a harmless no_agent cron: `hermes cron run tax-calendar` (or equivalent).
@@ -23,7 +23,7 @@ Checks (extend as the system grows):
 
 ## 3. Delegation test
 1. Message CEO: "ask finance for the current portfolio snapshot".
-2. CEO messages `finance` (Bot Chat), waits, relays the reply.
+2. CEO messages `finances-bot` (Bot Chat), waits, relays the reply.
 3. Verify the reply names the bot and contains real numbers or an honest blocker.
 
 ## 4. Escalation test (when a cloud rescue exists)

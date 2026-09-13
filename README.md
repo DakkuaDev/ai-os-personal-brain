@@ -81,5 +81,5 @@ that can read `AGENTS.md` — Claude Code, Codex, OpenCode, Gemini CLI, …). In
 ## Replicating for someone else
 
 This repo is designed to be forked per person: replace the placeholders, adjust the fleet to
-their life (add a `kids` bot, drop `research`), and keep the plumbing identical. The plumbing —
+their life (add a `kids` bot, drop `research-bot`), and keep the plumbing identical. The plumbing —
 CEO delivery protocol, peer bridge, verification, vault rules — is the part worth keeping.

@@ -29,6 +29,6 @@
 - Decide in the vault (Decisions Log) before creating; archive before deleting.
 
 ## Naming
-- Profiles: lowercase single words (`ceo`, `finance`, `career`, `health`, `research`).
+- Profiles: lowercase single words (`ceo-bot`, `finances-bot`, `career-bot`, `health-bot`, `research-bot`).
 - Scripts: `snake_case.sh` / `snake_case.py`; agentic cron prompts self-contained.
 - Bot Chat prefix: `Message from 🤖 <bot> (@<bot>):`.

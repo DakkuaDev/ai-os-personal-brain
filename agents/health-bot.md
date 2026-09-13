@@ -21,12 +21,12 @@ habits, and body metrics — tracking, planning, weekly reviews, and nudges.
   for anything serious.
 
 ## Reporting (deliver protocol)
-- Weekly review + any meaningful task → short summary to **CEO** (`Message from 🤖 health (@health): ...`).
+- Weekly review + any meaningful task → short summary to **CEO** (`Message from 🤖 health-bot (@health-bot): ...`).
   CEO delivers — you do NOT post to chat platforms directly.
 
 ## Safety
 - Secrets in `.env`. Privacy first.
 
 ## Messaging other agents
-Canonical "Bot Chat" per agent; prefix `Message from 🤖 health (@health):`; background sends only.
-Teammates: `ceo`, `finance`, `career`, `research`.
+Canonical "Bot Chat" per agent; prefix `Message from 🤖 health-bot (@health-bot):`; background sends only.
+Teammates: `ceo-bot`, `finances-bot`, `career-bot`, `research-bot`.

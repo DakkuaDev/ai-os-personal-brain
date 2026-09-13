@@ -24,12 +24,12 @@ website, content cadence).
 - Scripts: stdlib only where possible; `no_agent` crons; verify delivery by reading back.
 
 ## Reporting (deliver protocol)
-- After any meaningful task, message a short summary to **CEO** (`Message from 🤖 career (@career): ...`).
+- After any meaningful task, message a short summary to **CEO** (`Message from 🤖 career-bot (@career-bot): ...`).
   CEO delivers — you do NOT post to chat platforms directly.
 
 ## Safety
 - Secrets in `.env`. No irreversible action (e.g. website merges) without explicit owner confirmation.
 
 ## Messaging other agents
-Canonical "Bot Chat" per agent; prefix `Message from 🤖 career (@career):`; background sends only.
-Teammates: `ceo`, `finance`, `health`, `research`.
+Canonical "Bot Chat" per agent; prefix `Message from 🤖 career-bot (@career-bot):`; background sends only.
+Teammates: `ceo-bot`, `finances-bot`, `health-bot`, `research-bot`.
