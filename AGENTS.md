@@ -25,9 +25,9 @@ descriptions.
 | Bot | Role | Reports to |
 |---|---|---|
 | `ceo` | Orchestrator + single deliver agent | owner |
-| `finanzas` | Personal finance (tracking, DCA, taxes, portfolio) | ceo |
-| `carrera` | Career: jobs, CV, LinkedIn, personal brand | ceo |
-| `salud` | Health: exercise, diet, habits, metrics | ceo |
+| `finance` | Personal finance (tracking, DCA, taxes, portfolio) | ceo |
+| `career` | Career: jobs, CV, LinkedIn, personal brand | ceo |
+| `health` | Health: exercise, diet, habits, metrics | ceo |
 | `research` | Deep research: house hunting, skills, business | ceo |
 
 Roster is live: run `hermes profile list` (Hermes) before handoffs. Handoffs use `@mention` or

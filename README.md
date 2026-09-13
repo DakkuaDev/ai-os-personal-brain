@@ -26,7 +26,7 @@ that can read `AGENTS.md` — Claude Code, Codex, OpenCode, Gemini CLI, …). In
                 ┌───────────────▼──────────────────────┐
                 │  LOCAL (brain, open-source models)   │
                 │  CEO (orchestrator) ← talks to you   │
-                │  ├── finanzas  · career  · health    │
+                │  ├── finance  · career  · health    │
                 │  └── research                       │
                 │  Obsidian vault (memory layer)       │
                 └──────────────────────────────────────┘
@@ -63,9 +63,9 @@ that can read `AGENTS.md` — Claude Code, Codex, OpenCode, Gemini CLI, …). In
 ├── LICENSE                # MIT
 ├── agents/                # SOUL templates per role (the fleet's identity)
 │   ├── ceo.md             #   orchestrator + single deliver agent
-│   ├── finanzas.md        #   personal finance
-│   ├── carrera.md         #   career & job hunting
-│   ├── salud.md           #   health / exercise / diet
+│   ├── finance.md        #   personal finance
+│   ├── career.md         #   career & job hunting
+│   ├── health.md           #   health / exercise / diet
 │   └── research.md        #   deep research (house, skills, business)
 ├── profiles/              # per-bot: config + skill manifest (which skills, which tools)
 ├── skills/                # portable procedural skills (shared by the fleet)

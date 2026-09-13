@@ -19,7 +19,7 @@ A personal AI operation system in three layers:
                 │  €0 runtime                                 │
                 │                                             │
                 │  CEO (orchestrator) ← talks to the owner    │
-                │  ├── finanzas  ·  carrera  ·  salud         │
+                │  ├── finance  ·  career  ·  health         │
                 │  └── research                               │
                 │                                             │
                 │  Obsidian vault (memory layer) · crons      │

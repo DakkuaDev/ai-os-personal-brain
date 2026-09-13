@@ -4,7 +4,7 @@ A task is done when its checkpoint passes — executable where possible, observa
 These are the acceptance criteria for the whole system and for each domain.
 
 ## System health (`scripts/verify.sh` must end green)
-- [ ] All fleet profiles exist (`ceo`, `finanzas`, `carrera`, `salud`, `research`) and respond to a
+- [ ] All fleet profiles exist (`ceo`, `finance`, `career`, `health`, `research`) and respond to a
       Bot Chat ping.
 - [ ] Exactly ONE profile owns the chat platform (Discord/WhatsApp) — the CEO. No token conflicts.
 - [ ] All report crons deliver to `bot-chat:ceo` (or equivalent CEO channel); zero crons post raw
@@ -18,18 +18,18 @@ These are the acceptance criteria for the whole system and for each domain.
 - [ ] CEO digests: one message, merged/deduped, numbers over prose.
 - [ ] Owner-facing posts land in the home channel / DM, not scattered channels.
 
-## Finance (finanzas)
+## Finance (finance)
 - [ ] Trackers (Sheets) updated with real data; formulas valid; `;`-separator es_ES locale respected.
 - [ ] DCA plan numbers match the live portfolio; coast-fire target recomputed from current age/portfolio.
 - [ ] Tax calendar posts correct deadlines for the current quarter.
 - [ ] No fabricated numbers — if OAuth is dead, the report says so.
 
-## Career (carrera)
+## Career (career)
 - [ ] Digests include real, clickable source links with one-line context.
 - [ ] Max 5 offers, match-scored against the owner's profile (XR/Unity/PM, Mid-Senior, Remote/Spain/EU).
 - [ ] CV/brand deliverables are bilingual ES+EN and pass a visual check.
 
-## Health (salud)
+## Health (health)
 - [ ] Tracker updated with the owner's real input; trends flagged only when meaningful.
 - [ ] One nudge per day max; recommendations are sustainable, not heroic.
 

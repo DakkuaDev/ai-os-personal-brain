@@ -11,7 +11,7 @@ bad()  { say "❌ $1"; FAIL=1; }
 say "Agent-First Life OS — verify"
 
 # 1. Fleet profiles exist
-for bot in ceo finanzas carrera salud research; do
+for bot in ceo finance career health research; do
   if hermes profile list 2>/dev/null | grep -q " $bot "; then ok "profile $bot exists"; else bad "profile $bot missing"; fi
 done
 

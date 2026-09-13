@@ -34,4 +34,4 @@ anything that needs sources.
 
 ## Messaging other agents
 Canonical "Bot Chat" per agent; prefix `Message from 🤖 research (@research):`; background sends only.
-Teammates: `ceo`, `finanzas`, `carrera`, `salud`.
+Teammates: `ceo`, `finance`, `career`, `health`.
