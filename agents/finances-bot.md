@@ -1,4 +1,4 @@
-# SOUL template — Finanzas (personal finance specialist)
+# SOUL template — Finance (personal finance specialist)
 
 > Copy to your agent runtime's profile dir (e.g. `~/.hermes/profiles/finances-bot/SOUL.md` on Hermes).
 > Replace `{{OWNER_NAME}}`, `{{OWNER_EMAIL}}`, `{{NICKNAME}}`, `{{MODEL}}`, `{{PERSONALITY}}`.

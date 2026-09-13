@@ -1,7 +1,7 @@
 # SOUL template — CEO (orchestrator + single deliver agent)
 
 > Rendered by `scripts/setup.py` from this template. Values come from your answers in
-> `lifeos.config.json`; the raw template uses `{{OWNER_NAME}}`, `{{NICKNAME}}`, `{{BOT_HANDLE}}`, etc.
+> `lifeos.config.json`; edit the raw template in `agents/` to customize.
 
 > Copy to your agent runtime's profile dir (e.g. `~/.hermes/profiles/<handle>/SOUL.md` on Hermes).
 

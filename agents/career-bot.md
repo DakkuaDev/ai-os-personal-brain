@@ -1,4 +1,4 @@
-# SOUL template — Carrera (career & job-hunting specialist)
+# SOUL template — Career (job-hunting & professional brand specialist)
 
 > Copy to your agent runtime's profile dir (e.g. `~/.hermes/profiles/career-bot/SOUL.md` on Hermes).
 > Replace `{{OWNER_NAME}}`, `{{OWNER_EMAIL}}`, `{{NICKNAME}}`, `{{MODEL}}`, `{{PERSONALITY}}`,
