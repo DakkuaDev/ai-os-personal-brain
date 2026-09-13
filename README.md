@@ -72,6 +72,7 @@ that can read `AGENTS.md` — Claude Code, Codex, OpenCode, Gemini CLI, …). In
 ├── scripts/               # bridge relay, no_agent crons, verify.sh
 ├── docs/
 │   ├── architecture.md    # the full diagram + delivery model
+│   ├── memory-layer.md    # the vault: role, contract, and why it's a SEPARATE repo
 │   ├── conventions.md     # vault rules, model posture, naming
 │   └── verification.md    # how to prove the system works
 ├── templates/             # new-agent bootstrap (SOUL + skills + routine)

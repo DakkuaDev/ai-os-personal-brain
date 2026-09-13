@@ -40,8 +40,8 @@ agent-to-agent DMs; the recipient runs its own turn on its own machine.
 - Deterministic work goes in `no_agent` scripts (zero tokens): watchdogs, digests, syncs.
 
 ## 6. State lives on disk
-- **Vault** (Obsidian, `OBSIDIAN_VAULT_PATH`) = memory layer + control plane: `index.md`,
-  `CRITICAL_FACTS.md`, `Decisions Log.md`, `Goals.md`, `TODO - Next Steps.md`, `Logs/YYYY-MM-DD.md`.
+- **Vault** (Obsidian, `OBSIDIAN_VAULT_PATH`) = memory layer + control plane. **The vault is a
+  SEPARATE repo** (`DakkuaDev/hermes-vault`, private) — see `docs/memory-layer.md` for the contract.
   Read `index.md` → `CRITICAL_FACTS.md` first. Update the index + log whenever you create/edit notes.
 - **`progress/current.md`** = live session state; **`progress/history.md`** = append-only audit log.
   Agents write results to files and return only light references (anti telephone-game).
