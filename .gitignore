@@ -1,0 +1,17 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# runtime state
+progress/current.md
+*.db
+*.db-*
+state/
+sessions/
+logs/
+cache/
+
+# OS junk
+.DS_Store
+Thumbs.db
