@@ -20,7 +20,7 @@ CEODISC=$(hermes -p ceo-bot config get platforms.discord.enabled 2>/dev/null || 
 if [ "$CEODISC" = "True" ] || [ "$CEODISC" = "true" ]; then ok "ceo owns chat platform"; else bad "ceo does not own chat platform"; fi
 
 # 3. Report crons target ceo's bot chat
-BAD_DELIVER=$(grep -l '"deliver": "discord' ~/.hermes/cron/jobs.json 2>/dev/null)
+BAD_DELIVER=$(grep -l '"deliver": "discord' "${HERMES_HOME:-$HOME/.hermes}/cron/jobs.json" 2>/dev/null)
 if [ -z "$BAD_DELIVER" ]; then ok "no cron delivers raw to discord"; else bad "cron(s) still deliver raw to discord: $BAD_DELIVER"; fi
 
 # 4. Vault clean
@@ -30,8 +30,8 @@ else
   bad "OBSIDIAN_VAULT_PATH not a git repo"
 fi
 
-# 5. No secrets committed
-if grep -rIl -E "(DISCORD_BOT_TOKEN|API_KEY|SECRET)" --exclude-dir=.git . 2>/dev/null | grep -qv ".env"; then
+# 5. No secrets committed (skip verify.sh itself + .env.example placeholders)
+if grep -rIl -E "(DISCORD_BOT_TOKEN|API_KEY|SECRET)" --exclude-dir=.git --exclude="verify.sh" --exclude=".env.example" . 2>/dev/null | grep -qv ".env"; then
   bad "possible secret committed (see files above)"; else ok "no secrets in repo"; fi
 
 # 6. CEO responds
