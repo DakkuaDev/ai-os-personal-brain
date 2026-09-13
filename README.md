@@ -47,12 +47,20 @@ that can read `AGENTS.md` — Claude Code, Codex, OpenCode, Gemini CLI, …). In
 ## Quickstart
 
 1. Clone this repo.
-2. Copy `.env.example` → `.env` and fill in your tokens (Discord/WhatsApp, model provider, Sheets/Notion).
-3. `./scripts/verify.sh` — must end green.
-4. Read `AGENTS.md` — it tells any agent how to run this system.
-5. Create the fleet profiles (Hermes: `hermes profile create <name> --no-skills`) and give each
-   bot its SOUL from `agents/<role>.md` + the skills listed there.
+2. **Run the installer:** `python3 scripts/setup.py` — it asks who you are, which agents you
+   want, their nicknames + handles, the model/provider, the AI personality (technical / practical /
+   friendly), the chat platform, and the vault path. It renders your fleet:
+   - `lifeos.config.json` (your answers)
+   - `generated/agents/<handle>.md` (one ready-to-install SOUL per bot)
+   - `generated/SETUP-NEXT-STEPS.md` (exact commands to create the fleet)
+3. Copy `.env.example` → `.env` and fill in your tokens (Discord/WhatsApp, model provider, sheets/Notion).
+4. `./scripts/verify.sh` — must end green.
+5. Read `AGENTS.md` — it tells any agent how to run this system.
 6. Talk to CEO. Delegate. Watch it manage the fleet.
+
+> **Nicknames:** every bot has a display name (e.g. CEO = *Aegis*, finance = *Midas*) plus a
+> functional handle (e.g. `ceo-bot`, `finances-bot`). Handles stay searchable and taggable;
+> nicknames give them personality. Change them anytime in the installer or the config.
 
 ## Structure
 

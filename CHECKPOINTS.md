@@ -18,11 +18,12 @@ These are the acceptance criteria for the whole system and for each domain.
 - [ ] CEO digests: one message, merged/deduped, numbers over prose.
 - [ ] Owner-facing posts land in the home channel / DM, not scattered channels.
 
-## Finance (finance)
-- [ ] Trackers (Sheets) updated with real data; formulas valid; `;`-separator es_ES locale respected.
-- [ ] DCA plan numbers match the live portfolio; coast-fire target recomputed from current age/portfolio.
+## Finance (finances-bot)
+- [ ] Trackers (sheets) updated with real data; formulas valid; locale conventions respected.
+- [ ] Contribution plan numbers match the live portfolio; the long-term target (e.g. coast-FIRE age)
+      is recomputed from current age/portfolio.
 - [ ] Tax calendar posts correct deadlines for the current quarter.
-- [ ] No fabricated numbers — if OAuth is dead, the report says so.
+- [ ] No fabricated numbers — if auth is dead, the report says so.
 
 ## Career (career)
 - [ ] Digests include real, clickable source links with one-line context.

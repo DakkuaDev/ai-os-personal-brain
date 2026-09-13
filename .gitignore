@@ -3,6 +3,10 @@
 .env.*
 !.env.example
 
+# per-install output (personal — never commit)
+lifeos.config.json
+generated/
+
 # runtime state
 progress/current.md
 *.db

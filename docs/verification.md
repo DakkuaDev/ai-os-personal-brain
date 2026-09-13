@@ -16,8 +16,9 @@ Checks (extend as the system grows):
 - CEO responds to a ping (`hermes -p ceo-bot chat -Q -q "ping"` returns quickly).
 
 ## 2. Delivery loop test
-1. Fire a harmless no_agent cron: `hermes cron run tax-calendar` (or equivalent).
-2. Confirm the stdout lands in CEO's Bot Chat (read the CEO session).
+1. Fire a harmless scheduled job (e.g. on Hermes: `hermes cron run tax-calendar`; on any runtime:
+   trigger your simplest automation).
+2. Confirm the output lands in CEO's Bot Chat (read the CEO session).
 3. Confirm CEO posts a synthesized digest to the home channel.
 4. Confirm the owner sees exactly ONE message.
 
