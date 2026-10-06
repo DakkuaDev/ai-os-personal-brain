@@ -1,5 +1,13 @@
 # Architecture
 
+## Variants
+
+This diagram is the **hybrid** variant (cloud front door + local workers). The same pattern runs
+**local-only** (drop the cloud tier; desktop app is the front door) or **cloud-only** (drop the
+local tier; everything lives on the VPS). Modules (vault, Composio, chat gateway) are optional
+per deployment — see `docs/deployment.md` and `docs/setup.md`. Only the delivery invariant
+below is non-negotiable.
+
 ## The pattern
 A personal AI operation system in three layers:
 

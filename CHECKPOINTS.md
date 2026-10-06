@@ -4,14 +4,15 @@ A task is done when its checkpoint passes — executable where possible, observa
 These are the acceptance criteria for the whole system and for each domain.
 
 ## System health (`scripts/verify.sh` must end green)
-- [ ] All fleet profiles exist (`ceo-bot`, `finances-bot`, `career-bot`, `health-bot`, `research-bot`, `studies-bot`) and respond to a
-      Bot Chat ping.
+- [ ] All **configured** fleet profiles exist (from `lifeos.config.json`; default `ceo-bot`, `finances-bot`,
+      `career-bot`, `health-bot`, `research-bot`, `studies-bot`) and respond to a Bot Chat ping.
 - [ ] Exactly ONE profile owns the chat platform (Discord/WhatsApp) — the CEO. No token conflicts.
 - [ ] All report crons deliver to `bot-chat:ceo-bot` (or equivalent CEO channel); zero crons post raw
       output to the owner.
-- [ ] Vault exists, is git-tracked, and `git status` is clean after each session.
-- [ ] `.env` exists locally with required keys (`COMPOSIO_API_KEY` included); no secrets appear in this repo or in chat.
-- [ ] Composio MCP: `COMPOSIO_API_KEY` is set, apps are connected (`composio list --json | jq '.connectedAccounts[] | {app}'`)
+- [ ] Vault (only if module on) exists, is git-tracked, and `git status` is clean after each session.
+- [ ] `.env` exists locally with the keys for the **chosen modules** (Composio only if that module is on);
+      no secrets appear in this repo or in chat.
+- [ ] Composio MCP (only if module on): `COMPOSIO_API_KEY` is set, apps connected (`composio list`).
 - [ ] The CEO's last digest was delivered within its schedule window (no silent gap > 48h).
 
 ## Delivery protocol

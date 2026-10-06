@@ -1,84 +1,104 @@
-# Deployment — hosting & architecture options
+# Deployment — profiles, not presets
 
-> How the Life OS fleet runs, where it lives, and how to deploy it for yourself or someone else.
+> This blueprint is deployment-agnostic: **one pattern, three profiles, optional modules**.
+> Pick the profile per person — the plumbing (CEO delivery, verification, memory rules)
+> stays identical everywhere.
 
-## Option A: Cloud VPS (current — described setup)
+## A. Local-only — laptop/desktop (client, private, single machine)
 
-Hermes Agent hosted on a Nous Research VPS (the "DAKKUA S0" setup):
-- **OS:** Linux (container, overlay root — `/opt/data` survives restarts)
-- **Persistence:** All state on `/opt/data/` (profiles, vault, cron, sessions)
-- **Network:** Outbound works; inbound = **only** the Hermes dashboard (HTTPS on port 9119)
-  No public IP, no inbound port forwarding.
-- **Limit:** Can't expose custom ports — a started web server is container-only.
-- **Dashboard:** `HERMES_DASHBOARD_PUBLIC_URL` env var — the entry point.
-
-### Pros
-- Always-on (24/7)
-- No electricity/bandwidth cost on your laptop
-- 2FA/security managed by platform
-
-### Cons
-- No inbound connections (WhatsApp webhook, webhook receivers don't work)
-- Subscription cost (~$17/mo for Tier 1+, free Tier 0 available)
-- Cannot run long-running services beyond the agent
-
-## Option B: Local laptop/desktop (future — migration target)
-
-Run Hermes on your local machine with open-source models (Ollama):
-- **Full inbound access** — can use WhatsApp webhooks, expose APIs via Tailscale
-- **€0 inference** — local models are free
-- **Backups** are yours
-
-### Setup sketch
-```bash
-# Install Ollama + pull models
-ollama pull qwen3:8b
-# Install Hermes (local build or release)
-git clone https://github.com/org/hermes
-cd hermes && make install
-# Same clone fleet + setup flow from docs/setup.md
+```
+┌───────────────────────────────┐
+│  YOUR LAPTOP                  │
+│  Hermes + Ollama (€0 models)  │
+│  CEO ── finance · career · …  │
+│  Desktop app = front door     │
+│  Vault (optional) on disk     │
+└───────────────────────────────┘
 ```
 
-### Connecting phone
-- **Tailscale** (free VPN mesh) tunnels your local machine to your phone
-- WhatsApp bot → local webhook receiver → CEO
-- No cloud subscription needed
+- **Models:** local, open-source (Ollama: qwen3, llama, deepseek-distill…) — €0 inference.
+- **Front door:** the Hermes desktop app. No Discord/WhatsApp needed (optional if wanted).
+- **Always-on:** no — only when the machine is running. Fine for private use.
+- **Inbound access:** full freedom (no firewall weirdness) — can even expose APIs via Tailscale.
+- **Pros:** €0, private, you own everything. **Cons:** not 24/7, laptop is the bottleneck.
+- **Modules that make sense:** vault optional, Composio optional, gateway usually off.
 
-## Option C: Hybrid (best of both — recommended)
+## B. Cloud VPS — hosted, always-on (partner, family member, remote client)
 
-| Tier | Component | Model | Cost |
+```
+┌──────────────────────────────────┐
+│  HOSTED VPS / PORTAL INSTANCE    │
+│  Hermes, always-on               │
+│  CEO owns Discord/WhatsApp       │
+│  Dashboard = web front door      │
+│  Vault (optional) synced to git  │
+└──────────────────────────────────┘
+```
+
+- **Models:** hosted provider (Nous subscription, OpenRouter, etc.) — free/cheap tiers by
+  default, frontier only on demand.
+- **Front door:** chat gateway on CEO (Discord DM/channel or WhatsApp later).
+- **Always-on:** yes — crons, heartbeats, digests run 24/7.
+- **Inbound limit:** a hosted container usually exposes only its dashboard (no public ports).
+  WhatsApp webhooks need a relay (e.g. a tiny queue you poll) — see the hybrid pattern.
+- **Pros:** works from anywhere, no machine dependency. **Cons:** small monthly cost, less privacy.
+- **Modules that make sense:** gateway on, Composio on, vault optional (the person may not
+  care about notes — keep it simple).
+
+## C. Hybrid — cloud front door + local workers (power user)
+
+```
+        CLOUD (24/7)                    LOCAL (when you're home)
+  ┌──────────────────────┐        ┌──────────────────────────┐
+  │ CEO — owns chat      │◀──────▶│ workers: research, heavy │
+  │ cron + heartbeat     │ bridge  │ finance, local models   │
+  │ rescue model on call │        │ vault workspace          │
+  └──────────────────────┘        └──────────────────────────┘
+         │  Tailscale / peer bridge (private network tunnel)
+         ▼
+      PHONE (WhatsApp / mobile)
+```
+
+- **Cloud:** CEO + gateway + crons + rescue — always reachable.
+- **Local:** heavyweight workers (deep research, big computations) with local models = €0.
+- **Bridge:** peer DMs or a Tailscale tunnel; the cloud relays results through CEO.
+- **Pros:** best of both. **Cons:** more moving parts — worth it only for power users.
+
+## Choosing for someone else (worked examples)
+
+| Person | Profile | Modules | Bots |
 |---|---|---|---|
-| **Always-on cloud** (VPS) | CEO + cron + Discord gateway + rescue | Free/cheap (default), frontier on demand | ~$0–17/mo |
-| **Local** (laptop) | Fleet workers (research, finance heavy work) | Local (Ollama) | €0 |
-| **Phone** (future) | WhatsApp DM → CEO → fleet | — | Carrier data |
+| Non-technical partner | `cloud` | gateway ON · Composio ON (the apps they use) · vault OFF | CEO + 2–3 (finance, health…) |
+| Client / single machine | `local` | gateway OFF · Composio OFF or minimal · vault OFF | CEO + 1–2 domain bots |
+| Power user (e.g. the repo owner) | `hybrid` | everything ON + custom bots | full fleet + own domains |
 
-The CEO lives on the cloud (always on). Heavy work delegates to the local machine via
-peer bridge (Tailscale tunnel + API server key). The vault syncs both ways via git.
+Keep it smaller than you think necessary: **fewer bots and modules = easier to maintain**,
+and the pattern lets you add more later without rework.
 
 ## Backup & restore
 
-### Native full backup (Hermes)
+### Native full backup (Hermes) — every profile
 ```bash
-hermes backup
-# Creates /opt/data/backups/hermes-full-<date>.zip + .sha256
-# Contains: config, skills, sessions, cron, memory, plugins, vault clone
-```
-
-### Restore on new instance
-```bash
-# Copy the .zip to the new machine
-hermes import <zip>
-# That's it — exact clone. Then run verify.sh.
+hermes backup          # zip + sha256 of config, skills, sessions, cron, memory, profile data
+hermes import <zip>    # exact clone on a new machine
 ```
 
 ### Selective restore
-- Vault alone: `git clone git@github.com:YOUR_USER/hermes-vault.git`
-- Brain repo alone: `git clone git@github.com:DakkuaDev/ai-os-personal-brain.git`
+- **Vault alone:** `git clone <vault-repo>` (it's a git repo by design).
+- **Blueprint + config:** this repo + `lifeos.config.json` (keep a private copy of that file).
+- **Crons:** re-created from `progress/history.md` + `docs/daily-use.md` notes.
 
 ## Secrets
 
-- **Never** put tokens, API keys, or credentials in any repo — they belong in `.env`
-  files that are gitignored.
-- On Hermes VPS: `/opt/data/.env` is the canonical env file.
-- Per-profile: `~/.hermes/profiles/<name>/.env` (the profile can inherit or override).
-- The vault `Decisions Log.md` once leaked a key — redacted immediately. Use `grep -rn "ck_\|sk-\|AKIA" .` before committing.
+- Never put tokens, API keys, or credentials in any repo — they belong in `.env`
+  (gitignored) or the runtime's protected config.
+- Vault rule: refer to secrets **by name**, never by value.
+- Before committing anything: `grep -rnE "(sk-|ghp_|ck_|AKIA|AIza)" .` — catches pasted keys.
+
+## Hosted-instance constraints (know before you choose B or C)
+
+- The machine has **no public IP**: the dashboard URL is the only inbound route; you cannot
+  expose other ports or receive webhooks directly.
+- You **cannot install long-running services** beyond the agent itself.
+- Machine lifecycle, billing, and subscription are managed from the hosting portal — not by
+  the agent.

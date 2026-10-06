@@ -21,15 +21,20 @@ descriptions.
    attention.
 4. Ask the owner only on real judgment calls.
 
-## 4. Fleet
+## 4. Fleet (default — yours may differ)
 | Bot | Role | Reports to |
 |---|---|---|
 | `ceo-bot` | Orchestrator + single deliver agent | owner |
 | `finances-bot` | Personal finance (tracking, DCA, taxes, portfolio) | ceo |
 | `career-bot` | Career: jobs, CV, LinkedIn, personal brand | ceo |
 | `health-bot` | Health: exercise, diet, habits, metrics | ceo |
-| `studies-bot` | Academic study assistant (UNED master) | ceo |
 | `research-bot` | Deep research: house hunting, skills, business | ceo |
+| `studies-bot` | Academic study assistant (UNED master) | ceo |
+| *(your bots)* | Any recurring domain — same rules, same reporting | ceo |
+
+> This is a **default roster, not a requirement**: each person picks their own bots (installer
+> `scripts/setup.py` + `agents/custom-bot.md`). The constant is the **pattern**: every bot is a
+> minimal profile with 1–3 skills and reports to CEO; CEO is the only deliver agent.
 
 Roster is live: run `hermes profile list` (Hermes) before handoffs. Handoffs use `@mention` or
 agent-to-agent DMs; the recipient runs its own turn on its own machine.

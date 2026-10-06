@@ -1,6 +1,8 @@
 # Integrations & tool connections
 
-> How tools are connected in the Life OS, and how to replicate it.
+> How tools are connected in the Life OS, and how to replicate it. **This whole layer is an
+> optional module** — a minimal client setup may skip Composio and connect one or two apps
+> directly; the rest of the system doesn't care. `scripts/setup.py` asks whether to enable it.
 > **Composio MCP is the default for most apps** — fall back to direct APIs only when Composio
 > doesn't support the specific action.
 
