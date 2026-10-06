@@ -8,7 +8,7 @@
 
 | | Harness (this repo) | Memory layer (the vault) |
 |---|---|---|
-| Repo | `DakkuaDev/ai-so-personal-brain` | `DakkuaDev/hermes-vault` |
+| Repo | `DakkuaDev/ai-os-personal-brain` | `DakkuaDev/hermes-vault` |
 | Visibility | **Public** (sanitized blueprint, safe to share) | **Private** (contains personal data — never make it public) |
 | Role | *How the system works* (rules, templates, verification) | *What is true right now* (facts, decisions, goals, logs) |
 | Changes | On rule/SOUL/template change | On any meaningful event/decision |

@@ -28,6 +28,7 @@ descriptions.
 | `finances-bot` | Personal finance (tracking, DCA, taxes, portfolio) | ceo |
 | `career-bot` | Career: jobs, CV, LinkedIn, personal brand | ceo |
 | `health-bot` | Health: exercise, diet, habits, metrics | ceo |
+| `studies-bot` | Academic study assistant (UNED master) | ceo |
 | `research-bot` | Deep research: house hunting, skills, business | ceo |
 
 Roster is live: run `hermes profile list` (Hermes) before handoffs. Handoffs use `@mention` or
@@ -38,12 +39,13 @@ agent-to-agent DMs; the recipient runs its own turn on its own machine.
 - Default: free/open-source models. Escalate to a paid/frontier model ONLY when the task genuinely
   needs it and the owner asked (or CEO approves) — and report the cost impact.
 - Deterministic work goes in `no_agent` scripts (zero tokens): watchdogs, digests, syncs.
+- **Composio MCP** is the default tool bridge (GitHub, Gmail, Calendar, Sheets, Notion, LinkedIn). See `docs/integrations.md`.
 
 ## 6. State lives on disk
 - **Vault** (Obsidian, `OBSIDIAN_VAULT_PATH`) = memory layer + control plane. **The vault is a
   SEPARATE repo** (`DakkuaDev/hermes-vault`, private) — see `docs/memory-layer.md` for the contract.
   Read `index.md` → `CRITICAL_FACTS.md` first. Update the index + log whenever you create/edit notes.
-- **`progress/current.md`** = live session state; **`progress/history.md`** = append-only audit log.
+- **`progress/history.md`** = append-only audit log (live session state goes there or in a `progress/current.md` if needed).
   Agents write results to files and return only light references (anti telephone-game).
 - **Facts change over time**: never delete the old value — append a `timeline:` entry.
 

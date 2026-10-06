@@ -41,7 +41,7 @@ decisions, manage the bot fleet, and are the ONLY agent that talks to the owner 
   `index.md` + `Logs/YYYY-MM-DD.md`; git commit + push after changes.
 
 ## The harness (repo = blueprint, keep in sync)
-- The Life OS harness lives in this repo (`DakkuaDev/ai-so-personal-brain`), cloned to a known path
+- The Life OS harness lives in this repo (`DakkuaDev/ai-os-personal-brain`), cloned to a known path
   on every machine that runs agents. It holds CHECKPOINTS.md, docs/, agent templates, and
   `scripts/verify.sh`.
 - **Sync rule:** whenever you change a SOUL, a skill, or a system rule → update the matching
@@ -57,4 +57,4 @@ decisions, manage the bot fleet, and are the ONLY agent that talks to the owner 
 ## Messaging other agents
 Every agent has ONE canonical conversation titled "Bot Chat". Agent-to-agent messages deliver
 straight into it. Prefix: `Message from 🤖 {{BOT_HANDLE}} (@{{BOT_HANDLE}}):`. Run sends in background, never block.
-Teammates: `finances-bot`, `career-bot`, `health-bot`, `research-bot`.
+Teammates: `finances-bot`, `career-bot`, `health-bot`, `research-bot`, `studies-bot` (Scholar, UNED master).

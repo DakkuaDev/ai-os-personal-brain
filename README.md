@@ -70,11 +70,12 @@ that can read `AGENTS.md` — Claude Code, Codex, OpenCode, Gemini CLI, …). In
 ├── README.md              # this file
 ├── LICENSE                # MIT
 ├── agents/                # SOUL templates per role (the fleet's identity)
-│   ├── ceo.md             #   orchestrator + single deliver agent
-│   ├── finance.md        #   personal finance
-│   ├── career.md         #   career & job hunting
-│   ├── health.md           #   health / exercise / diet
-│   └── research.md        #   deep research (house, skills, business)
+│   ├── ceo-bot.md         #   orchestrator + single deliver agent
+│   ├── finances-bot.md    #   personal finance (Midas)
+│   ├── career-bot.md      #   career & job hunting (Compass)
+│   ├── health-bot.md      #   health / exercise / diet (Vital)
+│   ├── research-bot.md    #   deep research (Sage)
+│   └── studies-bot.md     #   academic study (Scholar)
 ├── profiles/              # per-bot: config + skill manifest (which skills, which tools)
 ├── skills/                # portable procedural skills (shared by the fleet)
 ├── scripts/               # bridge relay, no_agent crons, verify.sh
@@ -82,7 +83,12 @@ that can read `AGENTS.md` — Claude Code, Codex, OpenCode, Gemini CLI, …). In
 │   ├── architecture.md    # the full diagram + delivery model
 │   ├── memory-layer.md    # the vault: role, contract, and why it's a SEPARATE repo
 │   ├── conventions.md     # vault rules, model posture, naming
-│   └── verification.md    # how to prove the system works
+│   ├── verification.md    # how to prove the system works
+│   ├── setup.md           # new-instance bootstrap guide (~1h to working system)
+│   ├── integrations.md    # Composio MCP + Discord + Google + Notion + GitHub connections
+│   ├── daily-use.md       # daily cron rhythm, how to talk to CEO, weekly maintenance
+│   ├── deployment.md      # cloud/local/hybrid options, backup/restore, secrets
+│   └── principles.md      # the 'why' — researched best practices behind the architecture
 ├── templates/             # new-agent bootstrap (SOUL + skills + routine)
 └── progress/              # current.md (live state) + history.md (append-only log)
 ```

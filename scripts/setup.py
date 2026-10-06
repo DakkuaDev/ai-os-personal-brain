@@ -25,7 +25,7 @@ OUT_DIR = ROOT / "generated"
 OUT_AGENTS = OUT_DIR / "agents"
 CONFIG_PATH = ROOT / "lifeos.config.json"
 
-DOMAINS = ["ceo", "finances", "career", "health", "research"]
+DOMAINS = ["ceo", "finances", "career", "health", "research", "studies"]
 DEFAULT_HANDLES = {d: f"{d}-bot" for d in DOMAINS}
 DEFAULT_NICKNAMES = {
     "ceo": "Aegis",       # the right hand — shields you from the noise
@@ -152,7 +152,8 @@ def main() -> None:
                                 "finances": "personal finance specialist",
                                 "career": "career & job-hunting specialist",
                                 "health": "health / exercise / diet specialist",
-                                "research": "deep-research specialist"}[domain]})
+                                "research": "deep-research specialist",
+                                "studies": "academic study assistant (UNED master)"}[domain]})
 
     cfg = {
         "owner": {"name": owner_name, "email": owner_email},

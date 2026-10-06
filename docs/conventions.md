@@ -22,6 +22,13 @@
 - CEO is the only agent that posts to the owner. All reports flow through CEO.
 - `[SILENT]` / `NO_REPLY` = valid reply when nothing needs attention.
 - One digest; never repeat the same data twice.
+- Fleet message prefix: `Message from 🤖 <handle> (@<handle>):`.
+
+## Tool bridge (Composio MCP)
+- **Composio MCP** is the default tool layer for connected apps (GitHub, Gmail, Google Workspace, Notion, LinkedIn).
+- Workflow: `COMPOSIO_SEARCH_TOOLS` → `COMPOSIO_GET_TOOL_SCHEMAS` → `COMPOSIO_MULTI_EXECUTE_TOOL` (up to 50 tools in parallel).
+- API key: `COMPOSIO_API_KEY` in `.env`. Never in vault files or chat.
+- Add apps via `composio add <app>` on the dashboard (list grows over time; check with `composio list`).
 
 ## Fleet lifecycle
 - Prefer skill > cron > new bot.

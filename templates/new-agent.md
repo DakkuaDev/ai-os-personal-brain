@@ -18,7 +18,7 @@ hermes -p <name> config set platforms.discord.enabled false   # only ceo owns ch
 ```
 
 ## 3. SOUL
-- [ ] Copy `agents/_template.md` → `agents/<name>.md` (this repo), fill role/domain rules.
+- [ ] Copy an existing template `agents/<domain>-bot.md` → `agents/<name>.md` (this repo), fill role/domain rules.
 - [ ] Install as `<profile>/SOUL.md`.
 - [ ] Include: identity, model posture, domain rules (load skills first!), reporting-to-CEO protocol,
       safety, messaging protocol, roadmap context.
