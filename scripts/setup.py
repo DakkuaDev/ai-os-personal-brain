@@ -33,6 +33,7 @@ DEFAULT_NICKNAMES = {
     "career": "Compass",  # points you toward the next step
     "health": "Vital",    # keeps the engine running
     "research": "Sage",   # wisdom with sources
+    "studies": "Scholar", # the study secretary — UNED master
 }
 
 PERSONALITY = {

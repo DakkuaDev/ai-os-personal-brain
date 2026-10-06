@@ -30,9 +30,13 @@ else
   bad "OBSIDIAN_VAULT_PATH not a git repo"
 fi
 
-# 5. No secrets committed (skip verify.sh itself + .env.example placeholders)
-if grep -rIl -E "(DISCORD_BOT_TOKEN|API_KEY|SECRET)" --exclude-dir=.git --exclude-dir=generated --exclude="verify.sh" --exclude=".env.example" . 2>/dev/null | grep -qv '^\.env$'; then
-  bad "possible secret committed (see files above)"; else ok "no secrets in repo"; fi
+# 5. No secrets committed — flag real secret VALUES (env-var NAMES in docs are fine)
+SECRET_ASSIGN='[A-Z_]*(TOKEN|KEY|SECRET|PASSWORD)[A-Z_]*[[:space:]]*=[[:space:]]*[^#[:space:]][^[:space:]]{7,}'
+SECRET_SHAPE='(sk-[A-Za-z0-9]{16,}|ghp_[A-Za-z0-9]{30,}|ck_[A-Za-z0-9]{16,}|AKIA[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{30,}|xox[baprs]-[A-Za-z0-9-]{10,})'
+if grep -rInE "$SECRET_ASSIGN|$SECRET_SHAPE" --exclude-dir=.git --exclude-dir=generated \
+     --exclude="verify.sh" --exclude=".env.example" . 2>/dev/null \
+   | grep -vE ':.*(your_|example|REPLACE|xxx|dummy|<|>)' | grep -qv '^\.env:'; then
+  bad "possible secret VALUE committed (see files above)"; else ok "no secrets in repo"; fi
 
 # 6. CEO responds
 if timeout 60 hermes -p ceo-bot chat -Q -q "ping" 2>/dev/null | grep -qiE "pong|online|✅|session_id"; then
