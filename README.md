@@ -1,7 +1,7 @@
 # Agent-First Life OS
 
 <p align="center">
-  <img src="assets/banner.png" alt="Agent-First Life OS — one CEO, specialist bots, memory on disk" width="100%">
+  <img src="assets/banner.png" alt="Agent-First Life OS — one CEO agent, specialist bots, state on disk" width="100%">
 </p>
 
 A **minimal, replicable blueprint** for a personal "operating system" built around a fleet of

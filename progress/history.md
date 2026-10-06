@@ -14,3 +14,7 @@ templates/new-agent.md, scripts/verify.sh, .env.example, LICENSE. Fleet live on 
   • setup.py: profile-aware defaults (local→ollama, cloud/hybrid→nous), vault/composio yes-no, custom-bot prompt, SETUP-NEXT-STEPS only includes enabled modules (tested: local/no-vault/no-composio run renders 8 bots, 0 unresolved placeholders).
   • README: banner (assets/banner.svg + banner.png), deployment table, module matrix, replicable-for-anyone framing.
   • docs: setup.md and deployment.md rewritten profile-first; architecture/integrations/AGENTS/CHECKPOINTS/.env.example marked module-optional.
+
+2026-10-06 — banner redesigned: replaced the busy dark/neon version (gradient + glow + node
+diagram + pills) with a minimal editorial one — warm off-white, mono meta row, wordmark, one
+line of copy. assets/banner.svg is the source; banner.png is rendered at 2x and downscaled.
